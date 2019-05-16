@@ -1,7 +1,0 @@
-FROM python
-WORKDIR /app
-COPY . /app
-ENV CONFIG_COLOR white
-ENV CONFIG_SHAPE triangle
-RUN env
-CMD ["python", "config-reader.py", "--env"]

@@ -1,0 +1,4 @@
+FROM file
+COPY configs/blue_circle.ini /app/default.ini
+RUN apt update && apt install -y crudini
+RUN crudini --set default.ini DEFAULT shape line
