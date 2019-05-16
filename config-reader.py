@@ -1,4 +1,4 @@
-import json
+import configparser
 import argparse
 import os
 
@@ -34,15 +34,19 @@ if __name__ == "__main__":
         except:
             print('Error opening Config File ',filename)
         else:
+            config = configparser.ConfigParser()
             try:
-                config = json.load(config_file)
+                config.read_file(config_file)
             except:
-                print('Error reading JSON data from Config File')
+                print('Error reading INI data from Config File')
             else:
-                shape = config['shape']
-                color = config['color']
-                print('"color" = ', color)
-                print('"shape" = ', shape)
+                if 'DEFAULT' in config:
+                    shape = config['DEFAULT']['shape']
+                    color = config['DEFAULT']['color']
+                    print('"color" = ', color)
+                    print('"shape" = ', shape)
+                else:
+                    print('Missing [DEFAULT] section. No Config read from file')
 
     if arguments.color:
         color = arguments.color[0]
