@@ -1,0 +1,6 @@
+FROM python
+WORKDIR /app
+COPY config-reader.py /app/
+COPY configs/default.ini /app/
+ENTRYPOINT ["python", "config-reader.py"]
+CMD ["--file", "default.ini"]
