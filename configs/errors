@@ -1,2 +1,4 @@
-color black
-shape hole
+{
+  "color" : "black",
+  "shape" : "hole"
+}
